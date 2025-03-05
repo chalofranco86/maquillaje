@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleccionar Productos - Belleza Elegante</title>
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-header">
+            <div class="header-content">
+                <img src="{% static 'img/May1.png' %}" alt="Logo Belleza Elegante" class="brand-logo">
+                <h1 class="form-title">Selección de Productos</h1>
+            </div>
+        </div>
+        
+        <div class="form-content">
+            <!-- Filtros de búsqueda -->
+            <div class="filtros-container">
+                <form method="GET" class="filtros-form">
+                    <div class="filtro-group">
+                        <input type="text" name="nombre" placeholder="Buscar por nombre..." 
+                               value="{{ request.GET.nombre }}" class="filtro-input">
+                    </div>
+                    
+                    <div class="filtro-group">
+                        <select name="categoria" class="filtro-select">
+                            <option value="">Seleccionar Marca</option>
+                            {% for categoria in categorias %}
+                            <option value="{{ categoria.id }}" 
+                                {% if request.GET.categoria == categoria.id|stringformat:"s" %}selected{% endif %}>
+                                {{ categoria.nombre }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="filtro-group">
+                        <input type="number" name="precio_min" placeholder="Precio mínimo" 
+                               value="{{ request.GET.precio_min }}" class="filtro-input">
+                        <input type="number" name="precio_max" placeholder="Precio máximo" 
+                               value="{{ request.GET.precio_max }}" class="filtro-input">
+                    </div>
+                    
+                    <button type="submit" class="filtro-btn">Filtrar</button>
+                </form>
+            </div>
+
+            <!-- Listado de productos -->
+            <form method="post">
+                {% csrf_token %}
+                <div class="productos-grid">
+                    {% for producto in productos %}
+                    <div class="producto-card">
+                        <label class="producto-seleccion">
+                            <input type="checkbox" name="productos" value="{{ producto.id }}" class="checkbox-input">
+                            <div class="producto-content">
+                                <div class="producto-imagen-container">
+                                    <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" class="producto-imagen">
+                                </div>
+                                <div class="producto-info">
+                                    <h3 class="producto-nombre">{{ producto.nombre }}</h3>
+                                    <p class="producto-codigo">Código: {{ producto.codigo }}</p>
+                                    <p class="producto-precio">${{ producto.precio }}</p>
+                                    <span class="producto-categoria">{{ producto.categoria.nombre }}</span>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    {% empty %}
+                    <p class="sin-resultados">No se encontraron productos con los filtros aplicados</p>
+                    {% endfor %}
+                </div>
+                <div class="submit-section">
+                    <button type="submit" class="submit-btn">FINALIZAR PEDIDO</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Actualización automática al cambiar filtros
+        document.querySelectorAll('.filtro-input, .filtro-select').forEach(element => {
+            element.addEventListener('change', () => {
+                document.querySelector('.filtros-form').submit();
+            });
+        });
+    </script>
+</body>
+</html>

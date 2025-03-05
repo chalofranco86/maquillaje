@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo Pedido - Belleza Elegante</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-header">
+            <img src="{% static 'img/May1.png' %}" alt="Logo Belleza Elegante" class="brand-logo">
+            <h1 class="form-title">Solicitud de Pedido</h1>
+        </div>
+        
+        <div class="form-content">
+            <form method="post">
+                {% csrf_token %}
+                
+                <div class="form-group">
+                    <label for="id_nombre">Nombre Completo</label>
+                    {{ form.nombre }}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_celular">Teléfono de Contacto</label>
+                    {{ form.celular }}
+                </div>
+
+                <div class="form-group">
+                    <label for="id_direccion">Dirección de Entrega</label>
+                    {{ form.direccion }}
+                </div>
+
+                <div class="submit-section">
+                    <button type="submit" class="submit-btn">ENVIAR SOLICITUD</button>
+                    <p class="security-note">Tus datos están protegidos con encriptación SSL</p>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

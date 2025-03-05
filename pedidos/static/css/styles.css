@@ -1,0 +1,458 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: #FFF9FB;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+}
+
+/* Contenedor principal del formulario */
+.form-container {
+    max-width: 700px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(234, 153, 179, 0.1);
+    overflow: hidden;
+}
+
+/* Cabecera del formulario */
+.form-header {
+    background: linear-gradient(135deg, #D99C9C, #FF7EB3);
+    padding: 2.5rem;
+    text-align: center;
+    position: relative;
+}
+
+/* Ajuste para el título */
+.form-header .form-title {
+    margin-top: 1rem;
+    font-size: 2.4rem;
+}
+
+.form-header::after {
+    font-size: 2.5rem;
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Título principal */
+.form-title {
+    font-family: 'Marcellus', serif;
+    color: white;
+    font-size: 2.8rem;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Contenido del formulario */
+.form-content {
+    padding: 3rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Grupos de campos */
+.form-group {
+    width: 100%;
+    margin-bottom: 1.8rem;
+}
+
+/* Etiquetas */
+label {
+    display: block;
+    margin-bottom: 0.8rem;
+    color: #6D4D64;
+    font-weight: 500;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+
+/* Campos de entrada */
+input,
+textarea {
+    width: 100%;
+    height: 52px;
+    padding: 15px 20px;
+    border: 2px solid #F3E1E9;
+    border-radius: 10px;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    background: #FCFAFC;
+    resize: none;
+    transition: all 0.3s ease;
+}
+
+textarea {
+    height: 52px !important;
+    min-height: 52px;
+    overflow: hidden;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: #FF7EB3;
+    box-shadow: 0 0 12px rgba(255, 126, 179, 0.2);
+    background: white;
+}
+
+/* Sección de envío */
+.submit-section {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* Botón de enviar */
+.submit-btn {
+    background: linear-gradient(135deg, #D99C9C, #D99C9C);
+    color: white;
+    padding: 18px 45px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(255,255,255,0.3),
+        transparent);
+    transition: 0.5s;
+}
+
+.submit-btn:hover::before {
+    left: 100%;
+}
+
+/* Texto de seguridad */
+.security-note {
+    text-align: center;
+    color: #A68A9E;
+    font-size: 0.9rem;
+    margin-top: 1.5rem;
+}
+
+/* Logo de la marca */
+.brand-logo {
+    width: 100px; /* Tamaño fijo para el logotipo */
+    height: auto;
+}
+
+/* Estilos para selección de productos */
+.productos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem 0;
+}
+
+.producto-card {
+    border: 2px solid #F3E1E9;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.producto-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(234, 153, 179, 0.15);
+}
+
+.producto-seleccion {
+    display: block;
+    cursor: pointer;
+    padding: 1rem;
+    height: 100%;
+}
+
+.checkbox-input {
+    display: none;
+}
+
+.checkbox-input:checked + .producto-content {
+    background: #FFF5F8;
+    border: 2px solid #FF7EB3;
+    border-radius: 10px;
+}
+
+.producto-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.producto-imagen-container {
+    text-align: center;
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.producto-imagen {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+}
+
+.producto-info {
+    text-align: center;
+}
+
+.producto-nombre {
+    color: #6D4D64;
+    font-family: 'Marcellus', serif;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.producto-codigo {
+    color: #A68A9E;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+.producto-precio {
+    color: #FF758C;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+
+.producto-imagen-container {
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.producto-imagen {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.producto-imagen:hover {
+    transform: scale(1.05);
+}
+
+.imagen-placeholder {
+    width: 100%;
+    height: 100%;
+    background: #f8f8f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #c7c7c7;
+    font-style: italic;
+}
+
+/* Estilos para filtros */
+.filtros-container {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: #FFF5F8;
+    border-radius: 12px;
+}
+
+.filtros-form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    align-items: end;
+}
+
+.filtro-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.filtro-input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #F3E1E9;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: white;
+}
+
+.filtro-select {
+    appearance: none;
+    background: white url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236D4D64' stroke-width='2'%3e%3cpath d='M6 9l6 6 6-6'/%3e%3c/svg%3e") no-repeat right 15px center;
+    background-size: 15px;
+    padding-right: 40px;
+}
+
+.filtro-btn {
+    background: #FF7EB3;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filtro-btn:hover {
+    background: #FF6B9E;
+}
+
+.producto-categoria {
+    display: inline-block;
+    background: #FFEFF3;
+    color: #D96C8F;
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+}
+
+.sin-resultados {
+    text-align: center;
+    color: #A68A9E;
+    font-size: 1.2rem;
+    grid-column: 1 / -1;
+    padding: 2rem;
+}
+
+
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+        display: block;
+    }
+
+    .form-container {
+        border-radius: 15px;
+        margin: 1rem 0;
+    }
+
+    .form-header {
+        padding: 1.5rem;
+    }
+
+    .form-title {
+        font-size: 1.8rem;
+        margin-top: 0.5rem;
+    }
+
+    .brand-logo {
+        width: 70px;
+    }
+
+    .form-header::after {
+        font-size: 1.5rem;
+        right: 15px;
+    }
+
+    .form-content {
+        padding: 1.5rem;
+    }
+
+    .filtros-container {
+        padding: 1rem;
+    }
+
+    .filtro-input {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+
+    .filtro-btn {
+        padding: 10px 20px;
+        width: 100%;
+    }
+
+    .producto-card {
+        margin-bottom: 1rem;
+    }
+
+    .producto-imagen-container {
+        height: 180px;
+    }
+
+    .producto-imagen {
+        width: 120px;
+        height: 120px;
+    }
+
+    .producto-nombre {
+        font-size: 1.1rem;
+    }
+
+    .producto-precio {
+        font-size: 1.2rem;
+    }
+
+    .submit-btn {
+        padding: 15px 30px;
+        font-size: 1rem;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-title {
+        font-size: 1.5rem;
+    }
+
+    .brand-logo {
+        width: 60px;
+    }
+
+    .form-header::after {
+        display: none;
+    }
+
+    .producto-imagen-container {
+        height: 150px;
+        padding: 0.5rem;
+    }
+
+    .producto-imagen {
+        width: 100px;
+        height: 100px;
+    }
+
+    .producto-codigo {
+        font-size: 0.8rem;
+    }
+
+    .producto-categoria {
+        font-size: 0.75rem;
+    }
+}

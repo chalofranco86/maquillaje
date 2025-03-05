@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Éxito</title>
+</head>
+<body>
+    <h1>¡Solicitud enviada correctamente!</h1>
+    <a href="/pedidos/crear/">Volver al formulario</a>
+    <a href="{% url 'detalle_pedido' pedido_id=request.session.last_pedido_id %}">Ver detalle del pedido</a>
+</body>
+</html>
