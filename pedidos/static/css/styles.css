@@ -349,6 +349,112 @@ textarea:focus {
     padding: 2rem;
 }
 
+/* Estilos para detalle de pedido */
+.detalle-pedido {
+    padding: 2rem;
+}
+
+.section-title {
+    font-family: 'Marcellus', serif;
+    color: #6D4D64;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #FF7EB3;
+    padding-bottom: 0.5rem;
+}
+
+.info-group {
+    background: #FFF5F8;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+.info-label {
+    color: #D96C8F;
+    font-weight: 500;
+    min-width: 120px;
+    display: inline-block;
+}
+
+.productos-section {
+    margin-top: 2rem;
+}
+
+.producto-card.detalle {
+    border: none;
+    box-shadow: 0 4px 12px rgba(234, 153, 179, 0.1);
+}
+
+.total-section {
+    margin-top: 3rem;
+    text-align: center;
+    padding: 2rem;
+    background: #FFF5F8;
+    border-radius: 15px;
+}
+
+.total {
+    font-family: 'Marcellus', serif;
+    color: #6D4D64;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.total span {
+    color: #FF758C;
+    font-weight: 600;
+}
+
+/* Estilos para página de éxito */
+.exito-content {
+    text-align: center;
+    padding: 3rem 0;
+}
+
+.checkmark {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 2rem;
+}
+
+.checkmark__circle {
+    stroke: #FF7EB3;
+    stroke-width: 2;
+}
+
+.checkmark__check {
+    stroke: #FF7EB3;
+    stroke-width: 2;
+    stroke-linecap: round;
+}
+
+.exito-titulo {
+    font-family: 'Marcellus', serif;
+    color: #6D4D64;
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+}
+
+.exito-texto {
+    color: #A68A9E;
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+}
+
+.exito-botones {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-secundario {
+    background: linear-gradient(135deg, #FFF5F8, #FFEFF3) !important;
+    color: #D96C8F !important;
+    border: 2px solid #FF7EB3 !important;
+}
+
 
 @media (max-width: 768px) {
     body {
@@ -454,5 +560,27 @@ textarea:focus {
 
     .producto-categoria {
         font-size: 0.75rem;
+    }
+
+    .exito-titulo {
+        font-size: 1.8rem;
+    }
+    
+    .exito-texto {
+        font-size: 1rem;
+    }
+    
+    .checkmark {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .exito-botones {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .submit-btn {
+        width: 100%;
     }
 }

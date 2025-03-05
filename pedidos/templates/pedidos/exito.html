@@ -1,11 +1,42 @@
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Éxito</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Éxito - Belleza Elegante</title>
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <h1>¡Solicitud enviada correctamente!</h1>
-    <a href="/pedidos/crear/">Volver al formulario</a>
-    <a href="{% url 'detalle_pedido' pedido_id=request.session.last_pedido_id %}">Ver detalle del pedido</a>
+    <div class="form-container">
+        <div class="form-header">
+            <div class="header-content">
+                <img src="{% static 'img/May1.png' %}" alt="Logo Belleza Elegante" class="brand-logo">
+                <h1 class="form-title">¡Pedido Registrado!</h1>
+            </div>
+        </div>
+        
+        <div class="form-content">
+            <div class="exito-content">
+                <div class="exito-mensaje">
+                    <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                        <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                        <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                    </svg>
+                    <h2 class="exito-titulo">¡Solicitud creada correctamente!</h2>
+                    <p class="exito-texto">Tu pedido ha sido registrado con éxito</p>
+                    <p class="exito-texto">Clic en Ver Detalle para ver su lista de productos seleccionados</p>
+                </div>
+
+                <div class="exito-botones">
+                    
+                    <a href="{% url 'detalle_pedido' pedido_id=request.session.last_pedido_id %}" class="submit-btn btn-secundario">
+                        Ver Detalle
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
