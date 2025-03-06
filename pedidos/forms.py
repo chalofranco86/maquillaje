@@ -1,9 +1,9 @@
 from django import forms
-from .models import pedidos, Producto, Categoria
+from .models import Pedido, Producto, Categoria
 
 class PedidoForm(forms.ModelForm):
     class Meta:
-        model = pedidos
+        model = Pedido
         fields = ['nombre', 'celular', 'direccion']  # Campos que se mostrarán en el formulario
 
 class ProductoForm(forms.ModelForm):

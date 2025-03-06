@@ -5,7 +5,7 @@ from reportlab.lib import colors
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle, Paragraph, Image, Spacer
 from reportlab.lib.units import cm
-from .models import pedidos, Producto, Categoria
+from .models import Pedido, Producto, Categoria
 from .forms import PedidoForm, ProductoForm
 from django.db.models import Sum
 from django.http import HttpResponse
@@ -27,7 +27,7 @@ def exito(request):
     return render(request, 'pedidos/exito.html')  # Página simple de éxito
 
 def seleccionar_productos(request, pedido_id):
-    pedido = get_object_or_404(pedidos, pk=pedido_id)
+    pedido = get_object_or_404(Pedido, pk=pedido_id)
     
     if request.method == 'POST':
         productos_seleccionados = request.POST.getlist('productos')
@@ -62,7 +62,7 @@ def seleccionar_productos(request, pedido_id):
     })
 
 def detalle_pedido(request, pedido_id):
-    pedido = get_object_or_404(pedidos, pk=pedido_id)
+    pedido = get_object_or_404(Pedido, pk=pedido_id)
     productos = pedido.productos.all()
     total = productos.aggregate(total=Sum('precio'))['total'] or 0
 
