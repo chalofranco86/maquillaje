@@ -39,14 +39,11 @@ class Pedido(models.Model):  # Cambiado a singular
         return f"Pedido #{self.id} - {self.nombre}"
     
 class PedidoProducto(models.Model):
-    pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)  # Referencia directa
+    pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
     producto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    cantidad = models.PositiveIntegerField(default=1)  # <- Nuevo campo
     fecha_creacion = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         db_table = 'pedidos_pedido_productos'
 
-
-
-
-    

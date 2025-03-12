@@ -1,3 +1,4 @@
+
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
@@ -40,6 +41,20 @@
                     <p class="security-note">Tus datos están protegidos con encriptación SSL</p>
                 </div>
             </form>
+            {% block content %}
+            <div class="form-container">
+                <!-- Tu formulario actual -->
+                
+                <!-- Agrega este bloque nuevo -->
+                <div class="admin-access">
+                    {% if not user.is_authenticated %}
+                        <a href="{% url 'login' %}" class="admin-btn">Acceso Administrativo</a>
+                    {% else %}
+                        <a href="{% url 'lista_pedidos_admin' %}" class="admin-btn">Ver Pedidos</a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endblock %}
         </div>
     </div>
 </body>

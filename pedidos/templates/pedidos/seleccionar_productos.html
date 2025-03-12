@@ -1,3 +1,4 @@
+{% load pedidos_tags %} 
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
@@ -16,35 +17,35 @@
                 <h1 class="form-title">Selección de Productos</h1>
             </div>
         </div>
-        
+
         <div class="form-content">
             <!-- Filtros de búsqueda -->
             <div class="filtros-container">
                 <form method="GET" class="filtros-form">
                     <div class="filtro-group">
-                        <input type="text" name="nombre" placeholder="Buscar por nombre..." 
+                        <input type="text" name="nombre" placeholder="Buscar por nombre..."
                                value="{{ request.GET.nombre }}" class="filtro-input">
                     </div>
-                    
+
                     <div class="filtro-group">
                         <select name="categoria" class="filtro-select">
                             <option value="">Seleccionar Marca</option>
                             {% for categoria in categorias %}
-                            <option value="{{ categoria.id }}" 
+                            <option value="{{ categoria.id }}"
                                 {% if request.GET.categoria == categoria.id|stringformat:"s" %}selected{% endif %}>
                                 {{ categoria.nombre }}
                             </option>
                             {% endfor %}
                         </select>
                     </div>
-                    
+
                     <div class="filtro-group">
-                        <input type="number" name="precio_min" placeholder="Precio mínimo" 
+                        <input type="number" name="precio_min" placeholder="Precio mínimo"
                                value="{{ request.GET.precio_min }}" class="filtro-input">
-                        <input type="number" name="precio_max" placeholder="Precio máximo" 
+                        <input type="number" name="precio_max" placeholder="Precio máximo"
                                value="{{ request.GET.precio_max }}" class="filtro-input">
                     </div>
-                    
+
                     <button type="submit" class="filtro-btn">Filtrar</button>
                 </form>
             </div>
@@ -66,6 +67,10 @@
                                     <p class="producto-codigo">Código: {{ producto.codigo }}</p>
                                     <p class="producto-precio">${{ producto.precio }}</p>
                                     <span class="producto-categoria">{{ producto.categoria.nombre }}</span>
+                                    <!-- Campo oculto para almacenar la cantidad -->
+                                    <input type="hidden" name="cantidad_{{ producto.id }}" value="1" class="cantidad-hidden">
+                                    <!-- Campo de entrada para la cantidad -->
+                                    <input type="number" value="1" min="1" class="cantidad-input" onchange="updateCantidad(this, '{{ producto.id }}')">
                                 </div>
                             </div>
                         </label>
@@ -88,6 +93,10 @@
                 document.querySelector('.filtros-form').submit();
             });
         });
+
+        function updateCantidad(input, productoId) {
+            document.querySelector(`input[name="cantidad_${productoId}"]`).value = input.value;
+        }
     </script>
 </body>
 </html>

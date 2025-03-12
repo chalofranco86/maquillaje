@@ -1,0 +1,63 @@
+{% load pedidos_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel de Administración - Pedidos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/admin_styles.css' %}">
+</head>
+<body>
+    <div class="admin-container">
+        <header class="admin-header">
+            <div class="header-content">
+                <img src="{% static 'img/May1.png' %}" alt="Logo" class="brand-logo">
+                <h2>Panel de Administración - Pedidos</h2>
+            </div>
+            <div class="admin-actions">
+                <a href="{% url 'lista_pedidos_admin' %}" class="admin-btn">Actualizar</a>
+                <a href="{% url 'gestion_productos' %}" class="admin-btn">Gestionar Productos</a>
+                <a href="{% url 'admin:index' %}" class="admin-btn">Admin Principal</a>
+            </div>
+        </header>
+
+        <!-- Filtros -->
+        <div class="filtros-section">
+            <form method="get" class="filtro-form">
+                <input type="date" name="fecha" value="{{ request.GET.fecha }}">
+                <button type="submit" class="filtro-btn">Filtrar por fecha</button>
+                <a href="{% url 'lista_pedidos_admin' %}" class="limpiar-btn">Limpiar filtros</a>
+            </form>
+        </div>
+
+        <!-- Listado de pedidos -->
+        <div class="pedidos-list">
+            <div class="list-header">
+                <div class="header-item">ID</div>
+                <div class="header-item">Cliente</div>
+                <div class="header-item">Fecha</div>
+                <div class="header-item">Total</div>
+                <div class="header-item">Acciones</div>
+            </div>
+            
+            {% for pedido in pedidos %}
+            <div class="pedido-item">
+                <div class="pedido-id">#{{ pedido.id }}</div>
+                <div class="pedido-cliente">{{ pedido.nombre }}</div>
+                <div class="pedido-fecha">{{ pedido.fecha|date:"d/m/Y H:i" }}</div>
+                <div class="pedido-total">
+                    Q{{ pedido.total|default:0|floatformat:2 }}
+                </div>
+                <div class="pedido-acciones">
+                    <a href="{% url 'detalle_pedido' pedido.id %}" class="accion-btn ver">Ver</a>
+                    <a href="{% url 'detalle_pedido' pedido.id %}?descargar=1" class="accion-btn pdf">PDF</a>
+                </div>
+            </div>
+            {% empty %}
+            <div class="sin-resultados">No hay pedidos registrados</div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

@@ -529,6 +529,52 @@ textarea:focus {
         font-size: 1rem;
         width: 100%;
     }
+
+    .checkbox-container {
+        position: relative;
+        display: inline-block;
+        margin-right: 10px;
+    }
+    
+    .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 20px;
+        width: 20px;
+        background-color: #fff;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+    }
+    
+    .checkbox-input:checked ~ .checkmark {
+        background-color: #8B4513;
+        border-color: #8B4513;
+    }
+    
+    .cantidad-container {
+        display: inline-block;
+        margin-left: 10px;
+    }
+    
+    .cantidad-input {
+        width: 60px;
+        padding: 5px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        text-align: center;
+    }
+    
+    .cantidad-label {
+        margin-left: 5px;
+        color: #666;
+    }
+
+    .producto-subtotal {
+        color: #D96C8F;
+        font-weight: bold;
+        margin-top: 8px;
+    }
 }
 
 @media (max-width: 480px) {

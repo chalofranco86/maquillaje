@@ -1,0 +1,90 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container-admin">
+    <!-- Header -->
+    <div class="admin-header">
+        <h1 class="title">Gestión de Productos</h1>
+        <a href="{% url 'lista_pedidos_admin' %}" class="btn-back">← Volver al Panel</a>
+    </div>
+
+    <!-- Formulario Flotante -->
+    <div class="form-container floating-card">
+        <h2 class="form-title">Nuevo Producto</h2>
+        <form method="post" enctype="multipart/form-data" class="product-form">
+            {% csrf_token %}
+            
+            <div class="form-grid">
+                <!-- Columna Izquierda -->
+                <div class="form-column">
+                    <div class="form-group">
+                        <label>Nombre del Producto</label>
+                        {{ form.nombre }}
+                    </div>
+                    <div class="form-group">
+                        <label>Código Único</label>
+                        {{ form.codigo }}
+                    </div>
+                    <div class="form-group">
+                        <label>Precio (Q)</label>
+                        {{ form.precio }}
+                    </div>
+                </div>
+
+                <!-- Columna Derecha -->
+                <div class="form-column">
+                    <div class="form-group">
+                        <label>Categoría</label>
+                        {{ form.categoria }}
+                    </div>
+                    <div class="form-group">
+                        <label>Imagen del Producto</label>
+                        <div class="file-upload">
+                            {{ form.imagen }}
+                            <span class="file-label">Seleccionar archivo...</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Descripción</label>
+                        {{ form.descripcion }}
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-save">
+                <i class="fas fa-save"></i> Guardar Producto
+            </button>
+        </form>
+    </div>
+
+    <!-- Listado de Productos -->
+    <div class="product-grid">
+        {% for producto in productos %}
+        <div class="product-card">
+            <div class="product-image">
+                <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}">
+            </div>
+            <div class="product-info">
+                <h3>{{ producto.nombre }}</h3>
+                <div class="product-meta">
+                    <span class="badge">Código: {{ producto.codigo }}</span>
+                    <span class="price">Q{{ producto.precio }}</span>
+                </div>
+                <div class="product-actions">
+                    <a href="{% url 'admin:pedidos_producto_change' producto.id %}" class="btn-edit">
+                        <i class="fas fa-edit"></i> Editar
+                    </a>
+                    <span class="category">{{ producto.categoria.nombre }}</span>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="empty-state">
+            <i class="fas fa-box-open"></i>
+            <p>No hay productos registrados</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

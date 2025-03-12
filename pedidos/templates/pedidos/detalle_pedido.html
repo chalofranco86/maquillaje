@@ -31,16 +31,17 @@
                 <div class="productos-section">
                     <h2 class="section-title">Productos solicitados</h2>
                     <div class="productos-grid">
-                        {% for producto in productos %}
+                        {% for relacion in relaciones %}
                         <div class="producto-card detalle">
                             <div class="producto-content">
                                 <div class="producto-imagen-container">
-                                    <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" class="producto-imagen">
+                                    <img src="{{ relacion.producto.imagen.url }}" alt="{{ relacion.producto.nombre }}" class="producto-imagen">
                                 </div>
                                 <div class="producto-info">
-                                    <h3 class="producto-nombre">{{ producto.nombre }}</h3>
-                                    <p class="producto-codigo">Código: {{ producto.codigo }}</p>
-                                    <p class="producto-precio">Q{{ producto.precio }}</p>
+                                    <h3 class="producto-nombre">{{ relacion.producto.nombre }}</h3>
+                                    <p class="producto-codigo">Código: {{ relacion.producto.codigo }}</p>
+                                    <p class="producto-precio">Q{{ relacion.producto.precio }} x {{ relacion.cantidad }} und</p>
+                                    <p class="producto-subtotal">Subtotal: Q{% widthratio relacion.producto.precio 1 relacion.cantidad %}</p>
                                 </div>
                             </div>
                         </div>
