@@ -7,6 +7,7 @@ from . import views
 
 urlpatterns = [
     path('', RedirectView.as_view(url='crear/', permanent=False), name='home'),
+    path('', views.crear, name='home'),
     path('crear/', views.crear_pedido, name='crear_pedido'),
     path('seleccionar-productos/<int:pedido_id>/', views.seleccionar_productos, name='seleccionar_productos'),
     path('pedido/<int:pedido_id>/', views.detalle_pedido, name='detalle_pedido'),
