@@ -14,7 +14,6 @@ from io import BytesIO
 from django.contrib.admin.views.decorators import staff_member_required
 from django.db.models import F, Sum
 from django.contrib import messages
-from django.http import HttpResponse
 
 def crear_pedido(request):
     if request.method == 'POST':
@@ -235,5 +234,3 @@ def gestionar_productos(request):
         'form': form
     })
 
-def home(request):
-    return HttpResponse("¡Hola, mundo!")
