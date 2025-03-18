@@ -5,7 +5,6 @@ chardet==5.2.0
 dj-database-url==2.3.0
 Django==4.2.19
 gunicorn==23.0.0
-mysqlclient @ file:///C:/Users/DESARROLLADOR%202/Documents/EN%20DESARROLLO/pedidos/mysqlclient-1.4.6-cp38-cp38-win_amd64.whl#sha256=9bc249d5ce43e2432e6548d3b86bd604fc6ad8d2ca173aedb616dc89c4201ddb
 packaging==24.2
 pillow==10.4.0
 psycopg2-binary==2.8.6
@@ -15,3 +14,4 @@ sqlparse==0.5.3
 typing_extensions==4.12.2
 tzdata==2025.1
 whitenoise==6.7.0
+pip freeze > requirements.txt
