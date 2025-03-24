@@ -454,6 +454,10 @@ textarea:focus {
     color: #D96C8F !important;
     border: 2px solid #FF7EB3 !important;
 }
+.btn-container {
+    max-width: 300px;
+    margin: 0 auto;
+}
 
 
 @media (max-width: 768px) {
@@ -575,6 +579,35 @@ textarea:focus {
         font-weight: bold;
         margin-top: 8px;
     }
+    .total-section {
+        padding: 1.5rem;
+    }
+    
+    .total {
+        font-size: 1.4rem;
+    }
+    
+    .submit-btn {
+        width: 100%;
+        padding: 14px 20px;
+        font-size: 1rem;
+        border-radius: 12px;
+    }
+    .producto-card.detalle .producto-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .producto-imagen-container {
+        height: auto;
+        margin-bottom: 1rem;
+    }
+
+    .producto-imagen {
+        width: 120px;
+        height: 120px;
+    }
+
 }
 
 @media (max-width: 480px) {
@@ -628,5 +661,26 @@ textarea:focus {
     
     .submit-btn {
         width: 100%;
+    }
+    .total-section {
+        padding: 1rem;
+    }
+    
+    .total {
+        font-size: 1.2rem;
+    }
+    
+    .submit-btn {
+        padding: 12px 15px;
+        font-size: 0.9rem;
+    }
+    
+    .exito-texto {
+        font-size: 0.9rem;
+        margin: 1rem 0;
+    }
+    .btn-container {
+        max-width: 100%;
+        padding: 0 15px;
     }
 }
